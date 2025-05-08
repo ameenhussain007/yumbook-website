@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe.name }} - YumBook</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f8c471;
+        }
+
+        .recipe-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #aed6f1;
+            margin-top: 30px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #76d7c4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ recipe.name }}</h1>
+        <img src="{{ recipe.image }}" alt="{{ recipe.name }}" class="recipe-image">
+
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Instructions</h2>
+        <ol>
+            {% for step in recipe.instructions %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+
+        <a href="{{ url_for('categories') }}" class="back-link">← Back to Categories</a>
+    </div>
+</body>
+</html>

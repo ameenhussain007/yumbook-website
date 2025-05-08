@@ -1,0 +1,45 @@
+{% include '_navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About YumBook</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .about-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    .about-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff8c42;
+    }
+
+    .about-container p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="about-container">
+    <h1>About YumBook</h1>
+    <p>YumBook is a culinary companion designed for food lovers of all kinds. Whether you're a beginner or a seasoned cook, YumBook helps you discover, save, and explore delicious vegetarian and non-vegetarian recipes with ease.</p>
+    <p>Created with care by passionate developers and foodies, our platform blends simplicity with elegance to make your cooking journey enjoyable.</p>
+    <p>With YumBook, explore cuisines, bookmark your favorites, and revisit them anytime. Let's make cooking fun and flavorful!</p>
+  </div>
+</body>
+</html>

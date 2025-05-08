@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YumBook - Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="categories-dark">
+    <div class="category-wrapper">
+        <h1 class="category-heading">Pick a Category</h1>
+        <div class="category-buttons">
+            <a href="{{ url_for('recipe_list', category='vegetarian') }}" class="cat-btn veg-btn">
+                🥦 Vegetarian
+            </a>
+            <a href="{{ url_for('recipe_list', category='non_vegetarian') }}" class="cat-btn nonveg-btn">
+                🍗 Non-Vegetarian
+            </a>
+        </div>
+    </div>
+</body>
+</html>

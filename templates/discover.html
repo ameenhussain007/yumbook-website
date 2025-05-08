@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.title() }} Recipes - YumBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-image: url("/static/images/background.jpg");
+            background-size: cover;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: #ffcc70;
+        }
+
+        .recipe-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .recipe-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 15px;
+            width: 220px;
+            box-shadow: 0 0 15px rgba(255, 204, 112, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .recipe-name {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffe9c5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ category.title() }} Recipes</h1>
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+            <div class="recipe-card">
+                <a href="{{ url_for('recipe_detail', category=category, slug=recipe.slug) }}">
+                    <img src="{{ url_for('static', filename='images/recipes/' + recipe.image) }}" alt="{{ recipe.name }}">
+                    <div class="recipe-name">{{ recipe.name }}</div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

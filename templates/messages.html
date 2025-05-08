@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Messages - YumBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff7043;
+        }
+
+        .message-card {
+            background-color: #1e1e1e;
+            border-left: 4px solid #ff7043;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 112, 67, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .message-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 15px rgba(255, 112, 67, 0.3);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .message-name {
+            font-weight: bold;
+            color: #ffccbc;
+            font-size: 1.1rem;
+        }
+
+        .message-email {
+            color: #ffab91;
+            font-style: italic;
+        }
+
+        .message-content {
+            margin-top: 10px;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        .message-time {
+            text-align: right;
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff7043;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #ffab91;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('home') }}" class="back-link">&larr; Back to Home</a>
+        <h1>Contact Messages</h1>
+
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="message-card">
+                    <div class="message-header">
+                        <div class="message-name">{{ msg.name }}</div>
+                        <div class="message-email">&lt;{{ msg.email }}&gt;</div>
+                    </div>
+                    <div class="message-content">{{ msg.message }}</div>
+                    <div class="message-time">{{ msg.timestamp.strftime('%b %d, %Y at %I:%M %p') }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No messages have been submitted yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
